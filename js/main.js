@@ -1,25 +1,25 @@
 "use strict";
 
-let startText = document.getElementsByClassName('crop-text')[0];
-let getStartText = startText.innerText;
-let cropText = getStartText.slice(0, 200);
+let startText = document.getElementsByClassName('crop-text');
+let getStartText;
+let cropText;
 
-let btnMore = document.createElement('a');
-btnMore.classList.add("btn-more");
-btnMore.innerHTML = 'Подробнее...';
+let btnMore;
+let btnHide;
 
-let btnHide = document.createElement('a');
-btnHide.classList.add("btn-hide");
-btnHide.innerHTML = 'Скрыть...';
+let textContainer = document.getElementById('crop');
+let textCountElem = textContainer.childElementCount;
 
-console.log(startText);
-console.log(getStartText);
-console.log(cropText);
+let massText = [];
+let massCrop = [];
 
 function fullText() {
-  startText.innerHTML = getStartText;
-  startText.innerHTML = getStartText;
-  startText.append(btnHide);
+  // startText.innerHTML = getStartText;
+  // startText.innerHTML = getStartText;
+  // startText.append(btnHide);
+  btnHide = document.createElement('a');
+  btnHide.classList.add("btn-hide");
+  btnHide.innerHTML = 'Скрыть...';
 }
 
 function hideText() {
@@ -27,12 +27,14 @@ function hideText() {
   startText.append(btnMore);
 }
 
-if (getStartText.length > 100) {
-  startText.innerHTML = cropText;
-  startText.append(btnMore);
+for (let i = 0; i < textCountElem; i++) {
+  btnMore = document.createElement('a');
+  btnMore.classList.add("btn-more");
+  btnMore.innerHTML = 'Подробнее...';
+
+  massText.push(startText[i].innerText);
+  massCrop.push(massText[i].slice(0, 200));
+
+  startText[i].innerHTML = massCrop[i];
+  startText[i].append(btnMore);
 }
-
-btnMore.onclick = fullText;
-btnHide.onclick = hideText;
-
-console.log(cropText);

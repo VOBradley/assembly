@@ -23,6 +23,10 @@ img {
     width: 100%;
 }
 
+#crop {
+    padding: 50px 150px;  
+}
+
 .btn-more, .btn-hide {
     color: rgb(0, 117, 172);
     font-size: 13px;
