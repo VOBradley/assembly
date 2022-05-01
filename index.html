@@ -1,24 +1,41 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template</title>
-    <link rel="stylesheet" href="fonts/stylesheet.css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="css/fancybox.css">
-    <link rel="stylesheet" href="css/slick.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/media.css">
-</head>
-<body>
-   
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/fancybox.umd.js"></script>
-    <script src="js/slick.min.js"></script>
-    <script src="js/main.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Template</title>
+		<link rel="stylesheet" href="fonts/stylesheet.css" />
+		<link rel="stylesheet" href="css/normalize.css" />
+		<link rel="stylesheet" href="css/bootstrap-grid.min.css" />
+		<link rel="stylesheet" href="css/fancybox.css" />
+		<link rel="stylesheet" href="css/slick.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/media.css" />
+		<style>
+			.cart-list, .goods-list {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.goods-list img, .cart-list img {
+				width: 100px;
+			}
+
+			h1 {
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+	<h1>ТОВАРЫ</h1>
+	<div class="goods-list"></div>
+	<h1>КОРЗИНА</h1>
+	<div class="cart-list"></div>
+		<script src="js/jquery-3.6.0.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/fancybox.umd.js"></script>
+		<script src="js/slick.min.js"></script>
+		<script src="js/main.js"></script>
+	</body>
 </html>
