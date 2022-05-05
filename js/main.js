@@ -26,40 +26,41 @@ const goods = [
 ]
 
 let cart = []
-if(localStorage.getItem('cart')) {
+if (localStorage.getItem('cart')) {
 	cart = JSON.parse(localStorage.getItem('cart'))
 }
 
 function showGoods(goods) {
-	let str = '';
+	let str = ''
 	for (let i = 0; i < goods.length; i++) {
 		str += `<div class="goods-item">
 					<img src="${goods[i].img}" alt="${goods[i].name}">
 					<h3>${goods[i].name}</h3>
 					<p>${goods[i].price}</p>
 					<button onclick="addToCart(${goods[i].id})" class="buy-btn" data-id="${goods[i].id}">Купить</button>
-				</div>`;
+				</div>`
 	}
-	document.querySelector('.goods-list').innerHTML = str;
+	document.querySelector('.goods-list').innerHTML = str
 }
 
-showGoods(goods);
+showGoods(goods)
 
 function showCart(cart) {
-	let str = '';
+	let str = ''
 	for (let i = 0; i < cart.length; i++) {
 		str += `<div class="cart-item">
 					<img src="${cart[i].img}" alt="${cart[i].name}">
 					<h3>${cart[i].name}</h3>
 					<p>${cart[i].price}</p>
+          <span>${cart[i].count}</span>
 					<button onclick="removeGoodsCart(${cart[i].id})" class="delete-btn" data-id="${cart[i].id}">Удалить</button>
-				</div>`;
+				</div>`
 	}
-	localStorage.setItem('cart', JSON.stringify(cart));
-	document.querySelector('.cart-list').innerHTML = str;
+	localStorage.setItem('cart', JSON.stringify(cart))
+	document.querySelector('.cart-list').innerHTML = str
 
 	if (cart.length == 0) {
-		document.querySelector('.cart-list').innerHTML = 'Корзина пуста';
+		document.querySelector('.cart-list').innerHTML = 'Корзина пуста'
 	}
 }
 
@@ -68,9 +69,14 @@ showCart(cart)
 function addToCart(id) {
 	for (let i = 0; i < goods.length; i++) {
 		if (goods[i].id == id) {
-			cart.push(goods[i])
-			localStorage.setItem('cart', JSON.stringify(cart));
-			showCart(cart);
+			if (cart.find(element => element.id == id)) {
+				cart.find(element => element.id == id).count++
+			} else {
+				goods[i].count = 1
+				cart.push(goods[i])
+			}
+			localStorage.setItem('cart', JSON.stringify(cart))
+			showCart(cart)
 		}
 	}
 }
@@ -78,10 +84,10 @@ function addToCart(id) {
 function removeGoodsCart(id) {
 	for (let i = 0; i < cart.length; i++) {
 		if (cart[i].id == id) {
-			cart.splice(i, 1);
-			localStorage.setItem('cart', JSON.stringify(cart));
-			showCart(cart);
-			break;
+			cart.splice(i, 1)
+			localStorage.setItem('cart', JSON.stringify(cart))
+			showCart(cart)
+			break
 		}
 	}
 }
